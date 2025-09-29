@@ -1,0 +1,25 @@
+{
+	"i18n": true,
+	"type": "panel",
+	"items": {
+		"checkInterval": {
+			"type": "number",
+			"label": "Poll interval",
+			"newLine": true,
+			"xs": 12,
+			"help": "in minutes",
+			"sm": 10,
+			"md": 4,
+			"lg": 2
+		},
+		"option2": {
+			"type": "text",
+			"label": "Liquid-Check URL",
+			"newLine": true,
+			"xs": 12,
+			"sm": 10,
+			"md": 6,
+			"lg": 4
+		}
+	}
+}

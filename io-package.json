@@ -1,0 +1,91 @@
+{
+	"common": {
+		"name": "liquid-check",
+		"version": "0.0.2",
+		"news": {
+			"0.0.2": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"uk": "Початкова версія",
+				"zh-cn": "首次出版"
+			}
+		},
+		"titleLang": {
+			"en": "Liquid-Check",
+			"de": "Flüssigkeitskontrolle",
+			"ru": "Перепроверка жидкости",
+			"pt": "Verifique líquido",
+			"nl": "Vloeistofcontrole",
+			"fr": "Vérifier le liquide",
+			"it": "Controllo liquido",
+			"es": "Verificar con líquido",
+			"pl": "Sprawdzenie cieczy",
+			"uk": "Рідина",
+			"zh-cn": "液体检查"
+		},
+		"desc": {
+			"en": "liquid-check",
+			"de": "Flüssigkeitskontrolle",
+			"ru": "перепроверка жидкости",
+			"pt": "Verifique líquido",
+			"nl": "vloeistofcontrole",
+			"fr": "vérifier le liquide",
+			"it": "controllo liquido",
+			"es": "verificar con líquido",
+			"pl": "sprawdzenie cieczy",
+			"uk": "рідина",
+			"zh-cn": "液体检查"
+		},
+		"authors": [
+			"matz694 <matthias@stroske.de>"
+		],
+		"keywords": [
+			"ioBroker",
+			"template",
+			"Smart Home",
+			"home automation"
+		],
+		"licenseInformation": {
+			"type": "free",
+			"license": "MIT"
+		},
+		"platform": "Javascript/Node.js",
+		"icon": "liquid-check.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/matz694/ioBroker.liquid-check/main/admin/liquid-check.png",
+		"readme": "https://github.com/matz694/ioBroker.liquid-check/blob/main/README.md",
+		"loglevel": "info",
+		"tier": 3,
+		"mode": "daemon",
+		"type": "garden",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=6.0.11"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=7.0.23"
+			}
+		]
+	},
+	"native": {
+		"checkInterval": 15,
+		"option2": "http://liquid-check/infos.json"
+	},
+	"objects": [],
+	"instanceObjects": []
+}

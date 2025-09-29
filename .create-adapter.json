@@ -1,0 +1,36 @@
+{
+	"cli": true,
+	"target": "directory",
+	"adapterName": "liquid-check",
+	"title": "Liquid-Check",
+	"expert": "no",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [],
+	"type": "garden",
+	"startMode": "daemon",
+	"connectionType": "local",
+	"dataSource": "poll",
+	"connectionIndicator": "no",
+	"language": "TypeScript",
+	"nodeVersion": "20",
+	"adminUi": "json",
+	"tools": [
+		"ESLint"
+	],
+	"releaseScript": "yes",
+	"devServer": "yes",
+	"devServerPort": 8081,
+	"indentation": "Tab",
+	"quotes": "double",
+	"authorName": "matz694",
+	"authorGithub": "matz694",
+	"authorEmail": "matthias@stroske.de",
+	"gitRemoteProtocol": "HTTPS",
+	"gitCommit": "no",
+	"defaultBranch": "main",
+	"license": "MIT License",
+	"dependabot": "yes",
+	"creatorVersion": "2.6.5"
+}
