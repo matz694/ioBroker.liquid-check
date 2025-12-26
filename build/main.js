@@ -67,7 +67,7 @@ class LiquidCheck extends utils.Adapter {
       const response = await import_axios.default.get(this.config.option2);
       const data = response.data;
       this.log.info("Daten empfangen: " + JSON.stringify(data));
-      await this.processData(data);
+      await this.processData(data.payload);
     } catch (err) {
       this.log.error("Fehler beim Laden der Daten: " + err.message);
     }

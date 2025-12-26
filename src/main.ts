@@ -59,7 +59,7 @@ class LiquidCheck extends utils.Adapter {
 			const data = response.data; // JSON
 			this.log.info("Daten empfangen: " + JSON.stringify(data));
 
-			await this.processData(data);
+			await this.processData(data.payload);
 
 		} catch (err: any) {
 			this.log.error("Fehler beim Laden der Daten: " + err.message);
