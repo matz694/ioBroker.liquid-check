@@ -54,8 +54,7 @@
     "ts-node": "^10.9.2",
     "typescript": "~5.0.4"
   },
-  "overrides": 
-  { "chai-as-promised": "8.0.2", "@iobroker/testing>chai-as-promised": "8.0.2" },
+
   "main": "build/main.js",
   "files": [
     "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|.eslintrc).{json,json5}",
