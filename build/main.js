@@ -25,6 +25,7 @@ var utils = __toESM(require("@iobroker/adapter-core"));
 var import_axios = __toESM(require("axios"));
 class LiquidCheck extends utils.Adapter {
   interval;
+  isFetching = false;
   async processData(data, path = "") {
     for (const key of Object.keys(data)) {
       const value = data[key];
@@ -47,12 +48,12 @@ class LiquidCheck extends utils.Adapter {
           default:
             type = "string";
         }
-        await this.setObjectNotExistsAsync(stateId, {
+        await this.extendObjectAsync(stateId, {
           type: "state",
           common: {
             name: stateId,
             type,
-            role: "value",
+            role: "sensor",
             read: true,
             write: false
           },
@@ -63,13 +64,21 @@ class LiquidCheck extends utils.Adapter {
     }
   }
   async fetchData() {
+    if (this.isFetching) {
+      return;
+    }
+    this.isFetching = true;
     try {
       const response = await import_axios.default.get(this.config.option2, { timeout: 1e4 });
       const data = response.data;
-      this.log.info("Daten empfangen: " + JSON.stringify(data));
+      this.log.debug("Daten empfangen: " + JSON.stringify(data));
       await this.processData(data.payload);
+      await this.setStateAsync("info.connection", { val: true, ack: true });
     } catch (err) {
       this.log.error("Fehler beim Laden der Daten: " + err.message);
+      await this.setStateAsync("info.connection", { val: false, ack: true });
+    } finally {
+      this.isFetching = false;
     }
   }
   constructor(options = {}) {
@@ -87,8 +96,9 @@ class LiquidCheck extends utils.Adapter {
   async onReady() {
     this.log.info("Poll Intervall: " + this.config.checkInterval);
     this.log.info("Poll Url option2: " + this.config.option2);
+    await this.setStateAsync("info.connection", { val: false, ack: true });
     await this.fetchData();
-    const intervalMs = (this.config.checkInterval || 15) * 1e3;
+    const intervalMs = (this.config.checkInterval || 15) * 60 * 1e3;
     this.interval = this.setInterval(() => this.fetchData(), intervalMs);
   }
   /**
