@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "liquid-check",
-		"version": "0.0.2",
+		"version": "0.0.3",
 		"news": {
+			"0.0.3": {
+				"en": "Bug fixes and best practices compliance",
+				"de": "Bugfixes und Einhaltung der Best Practices"
+			},
 			"0.0.2": {
 				"en": "initial release",
 				"de": "Erstveröffentlichung",
