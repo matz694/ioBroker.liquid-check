@@ -37,12 +37,12 @@ class LiquidCheck extends utils.Adapter {
 						type = "string"; // Fallback für nicht unterstützte Typen
 				}
 
-				await this.setObjectNotExistsAsync(stateId, {
+				await this.extendObjectAsync(stateId, {
 					type: "state",
 					common: {
 						name: stateId,
 						type: type,
-						role: "value",
+						role: "sensor",
 						read: true,
 						write: false,
 					},
@@ -65,9 +65,11 @@ class LiquidCheck extends utils.Adapter {
 			this.log.debug("Daten empfangen: " + JSON.stringify(data));
 
 			await this.processData(data.payload);
+			await this.setStateAsync("info.connection", { val: true, ack: true });
 
 		} catch (err: any) {
 			this.log.error("Fehler beim Laden der Daten: " + err.message);
+			await this.setStateAsync("info.connection", { val: false, ack: true });
 		} finally {
 			this.isFetching = false;
 		}
@@ -89,12 +91,10 @@ class LiquidCheck extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	private async onReady(): Promise<void> {
-		// Initialize your adapter here
-
-		// The adapters config (in the instance object everything under the attribute "native") is accessible via
-		// this.config:
 		this.log.info("Poll Intervall: " + this.config.checkInterval);
 		this.log.info("Poll Url option2: " + this.config.option2);
+
+		await this.setStateAsync("info.connection", { val: false, ack: true });
 
 		await this.fetchData();
 
