@@ -53,7 +53,7 @@ All nested values in `payload` will be created as ioBroker states.
 ## Changelog
 
 ### 0.0.3 **WORK IN PROGRESS**
-* (matz694) Bug fixes and best practices compliance
+* (matz694) Bug fixes, best practices compliance, dependency updates
 
 ### 0.0.2 (2025-12-26)
 * (matz694) Initial release
