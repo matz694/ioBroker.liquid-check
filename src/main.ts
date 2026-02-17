@@ -11,7 +11,7 @@ import * as utils from "@iobroker/adapter-core";
 import axios from "axios";
 
 class LiquidCheck extends utils.Adapter {
-	private interval: NodeJS.Timeout | undefined;
+	private interval: any;
 
 	private async processData(data: any, path: string = ""): Promise<void> {
     	for (const key of Object.keys(data)) {
@@ -55,7 +55,7 @@ class LiquidCheck extends utils.Adapter {
 
 	private async fetchData(): Promise<void> {
 		try {
-			const response = await axios.get(this.config.option2);
+			const response = await axios.get(this.config.option2, { timeout: 10000 });
 			const data = response.data; // JSON
 			this.log.info("Daten empfangen: " + JSON.stringify(data));
 
@@ -92,7 +92,8 @@ class LiquidCheck extends utils.Adapter {
 		await this.fetchData();
 
     	// Dann alle 60 Sekunden erneut
-		this.interval = this.setInterval(() => this.fetchData(), 60_000) as unknown as NodeJS.Timeout;;
+		const intervalMs = (this.config.checkInterval || 15) * 1000;
+		this.interval = this.setInterval(() => this.fetchData(), intervalMs);
 	}
 
 	/**
