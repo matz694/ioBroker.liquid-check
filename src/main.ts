@@ -12,6 +12,7 @@ import axios from "axios";
 
 class LiquidCheck extends utils.Adapter {
 	private interval: any;
+	private isFetching: boolean = false;
 
 	private async processData(data: any, path: string = ""): Promise<void> {
     	for (const key of Object.keys(data)) {
@@ -54,15 +55,21 @@ class LiquidCheck extends utils.Adapter {
 	}
 
 	private async fetchData(): Promise<void> {
+		if (this.isFetching) {
+			return;
+		}
+		this.isFetching = true;
 		try {
 			const response = await axios.get(this.config.option2, { timeout: 10000 });
-			const data = response.data; // JSON
-			this.log.info("Daten empfangen: " + JSON.stringify(data));
+			const data = response.data;
+			this.log.debug("Daten empfangen: " + JSON.stringify(data));
 
 			await this.processData(data.payload);
 
 		} catch (err: any) {
 			this.log.error("Fehler beim Laden der Daten: " + err.message);
+		} finally {
+			this.isFetching = false;
 		}
 	}
 
@@ -92,7 +99,7 @@ class LiquidCheck extends utils.Adapter {
 		await this.fetchData();
 
     	// Dann alle 60 Sekunden erneut
-		const intervalMs = (this.config.checkInterval || 15) * 1000;
+		const intervalMs = (this.config.checkInterval || 15) * 60 * 1000;
 		this.interval = this.setInterval(() => this.fetchData(), intervalMs);
 	}
 
