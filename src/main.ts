@@ -11,7 +11,8 @@ import * as utils from "@iobroker/adapter-core";
 import axios from "axios";
 
 class LiquidCheck extends utils.Adapter {
-	private interval: NodeJS.Timeout | undefined;
+	private interval: any;
+	private isFetching: boolean = false;
 
 	private async processData(data: any, path: string = ""): Promise<void> {
     	for (const key of Object.keys(data)) {
@@ -36,12 +37,12 @@ class LiquidCheck extends utils.Adapter {
 						type = "string"; // Fallback für nicht unterstützte Typen
 				}
 
-				await this.setObjectNotExistsAsync(stateId, {
+				await this.extendObjectAsync(stateId, {
 					type: "state",
 					common: {
 						name: stateId,
 						type: type,
-						role: "value",
+						role: "sensor",
 						read: true,
 						write: false,
 					},
@@ -54,15 +55,23 @@ class LiquidCheck extends utils.Adapter {
 	}
 
 	private async fetchData(): Promise<void> {
+		if (this.isFetching) {
+			return;
+		}
+		this.isFetching = true;
 		try {
-			const response = await axios.get(this.config.option2);
-			const data = response.data; // JSON
-			this.log.info("Daten empfangen: " + JSON.stringify(data));
+			const response = await axios.get(this.config.option2, { timeout: 10000 });
+			const data = response.data;
+			this.log.debug("Daten empfangen: " + JSON.stringify(data));
 
 			await this.processData(data.payload);
+			await this.setStateAsync("info.connection", { val: true, ack: true });
 
 		} catch (err: any) {
 			this.log.error("Fehler beim Laden der Daten: " + err.message);
+			await this.setStateAsync("info.connection", { val: false, ack: true });
+		} finally {
+			this.isFetching = false;
 		}
 	}
 
@@ -82,17 +91,16 @@ class LiquidCheck extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	private async onReady(): Promise<void> {
-		// Initialize your adapter here
-
-		// The adapters config (in the instance object everything under the attribute "native") is accessible via
-		// this.config:
 		this.log.info("Poll Intervall: " + this.config.checkInterval);
 		this.log.info("Poll Url option2: " + this.config.option2);
+
+		await this.setStateAsync("info.connection", { val: false, ack: true });
 
 		await this.fetchData();
 
     	// Dann alle 60 Sekunden erneut
-		this.interval = this.setInterval(() => this.fetchData(), 60_000) as unknown as NodeJS.Timeout;;
+		const intervalMs = (this.config.checkInterval || 15) * 60 * 1000;
+		this.interval = this.setInterval(() => this.fetchData(), intervalMs);
 	}
 
 	/**

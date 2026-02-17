@@ -64,7 +64,7 @@ class LiquidCheck extends utils.Adapter {
   }
   async fetchData() {
     try {
-      const response = await import_axios.default.get(this.config.option2);
+      const response = await import_axios.default.get(this.config.option2, { timeout: 1e4 });
       const data = response.data;
       this.log.info("Daten empfangen: " + JSON.stringify(data));
       await this.processData(data.payload);
@@ -88,8 +88,8 @@ class LiquidCheck extends utils.Adapter {
     this.log.info("Poll Intervall: " + this.config.checkInterval);
     this.log.info("Poll Url option2: " + this.config.option2);
     await this.fetchData();
-    this.interval = this.setInterval(() => this.fetchData(), 6e4);
-    ;
+    const intervalMs = (this.config.checkInterval || 15) * 1e3;
+    this.interval = this.setInterval(() => this.fetchData(), intervalMs);
   }
   /**
    * Is called when adapter shuts down - callback has to be called under any circumstances!
