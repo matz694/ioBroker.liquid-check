@@ -62,7 +62,7 @@ All nested values in `payload` will be created as ioBroker states.
 
 MIT License
 
-Copyright (c) 2025 matz694 <matthias@stroske.de>
+Copyright (c) 2025 matz694 <mstroske [at] gmail [dot] com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
