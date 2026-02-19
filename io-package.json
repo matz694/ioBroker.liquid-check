@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "liquid-check",
-		"version": "0.0.3",
+		"version": "0.1.0",
 		"news": {
+			"0.1.0": {
+				"en": "ioBroker adapter guidelines compliance, URL validation, improved interval handling",
+				"de": "Einhaltung der ioBroker-Richtlinien, URL-Validierung, verbesserte Intervall-Verarbeitung"
+			},
 			"0.0.3": {
 				"en": "Bug fixes and best practices compliance",
 				"de": "Bugfixes und Einhaltung der Best Practices"
