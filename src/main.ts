@@ -81,7 +81,6 @@ class LiquidCheck extends utils.Adapter {
 			name: "liquid-check",
 		});
 		this.on("ready", this.onReady.bind(this));
-		this.on("stateChange", this.onStateChange.bind(this));
 		// this.on("objectChange", this.onObjectChange.bind(this));
 		// this.on("message", this.onMessage.bind(this));
 		this.on("unload", this.onUnload.bind(this));
@@ -96,9 +95,14 @@ class LiquidCheck extends utils.Adapter {
 
 		await this.setStateAsync("info.connection", { val: false, ack: true });
 
-		await this.fetchData();
+		this.subscribeStates("*");
 
-    	// Dann alle 60 Sekunden erneut
+		try {
+			await this.fetchData();
+		} catch (e) {
+			this.log.error("Initial data fetch failed: " + e);
+		}
+
 		const intervalMs = (this.config.checkInterval || 15) * 60 * 1000;
 		this.interval = this.setInterval(() => this.fetchData(), intervalMs);
 	}
@@ -136,19 +140,6 @@ class LiquidCheck extends utils.Adapter {
 	// 		this.log.info(`object ${id} deleted`);
 	// 	}
 	// }
-
-	/**
-	 * Is called if a subscribed state changes
-	 */
-	private onStateChange(id: string, state: ioBroker.State | null | undefined): void {
-		if (state) {
-			// The state was changed
-			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-		} else {
-			// The state was deleted
-			this.log.info(`state ${id} deleted`);
-		}
-	}
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**

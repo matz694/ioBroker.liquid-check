@@ -52,7 +52,9 @@
 		],
 		"keywords": [
 			"ioBroker",
-			"template",
+			"liquid",
+			"sensor",
+			"water",
 			"Smart Home",
 			"home automation"
 		],
@@ -68,7 +70,7 @@
 		"loglevel": "info",
 		"tier": 3,
 		"mode": "daemon",
-		"type": "garden",
+		"type": "other",
 		"compact": true,
 		"connectionType": "local",
 		"dataSource": "poll",
