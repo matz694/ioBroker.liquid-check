@@ -117,7 +117,7 @@ class LiquidCheck extends utils.Adapter {
 				clearInterval(this.interval);
 			}
 			callback();
-		} catch (e) {
+		} catch {
 			callback();
 		}
 	}
