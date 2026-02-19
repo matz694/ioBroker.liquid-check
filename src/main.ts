@@ -54,10 +54,26 @@ class LiquidCheck extends utils.Adapter {
 		}
 	}
 
+	private isValidUrl(url: string): boolean {
+		try {
+			new URL(url);
+			return true;
+		} catch {
+			return false;
+		}
+	}
+
 	private async fetchData(): Promise<void> {
 		if (this.isFetching) {
 			return;
 		}
+
+		if (!this.isValidUrl(this.config.option2)) {
+			this.log.error("Invalid URL: " + this.config.option2);
+			await this.setStateAsync("info.connection", { val: false, ack: true });
+			return;
+		}
+
 		this.isFetching = true;
 		try {
 			const response = await axios.get(this.config.option2, { timeout: 10000 });
@@ -81,7 +97,6 @@ class LiquidCheck extends utils.Adapter {
 			name: "liquid-check",
 		});
 		this.on("ready", this.onReady.bind(this));
-		// this.on("objectChange", this.onObjectChange.bind(this));
 		// this.on("message", this.onMessage.bind(this));
 		this.on("unload", this.onUnload.bind(this));
 	}
@@ -97,14 +112,13 @@ class LiquidCheck extends utils.Adapter {
 
 		this.subscribeStates("*");
 
+		this.startInterval();
+
 		try {
 			await this.fetchData();
 		} catch (e) {
 			this.log.error("Initial data fetch failed: " + e);
 		}
-
-		const intervalMs = (this.config.checkInterval || 15) * 60 * 1000;
-		this.interval = this.setInterval(() => this.fetchData(), intervalMs);
 	}
 
 	/**
@@ -126,20 +140,13 @@ class LiquidCheck extends utils.Adapter {
 		}
 	}
 
-	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-	// /**
-	//  * Is called if a subscribed object changes
-	//  */
-	// private onObjectChange(id: string, obj: ioBroker.Object | null | undefined): void {
-	// 	if (obj) {
-	// 		// The object was changed
-	// 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-	// 	} else {
-	// 		// The object was deleted
-	// 		this.log.info(`object ${id} deleted`);
-	// 	}
-	// }
+	private startInterval(): void {
+		if (this.interval) {
+			clearInterval(this.interval);
+		}
+		const intervalMs = (this.config.checkInterval || 15) * 60 * 1000;
+		this.interval = this.setInterval(() => this.fetchData(), intervalMs);
+	}
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
