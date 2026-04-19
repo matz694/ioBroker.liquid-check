@@ -63,8 +63,21 @@ class LiquidCheck extends utils.Adapter {
       }
     }
   }
+  isValidUrl(url) {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  }
   async fetchData() {
     if (this.isFetching) {
+      return;
+    }
+    if (!this.isValidUrl(this.config.option2)) {
+      this.log.error("Invalid URL: " + this.config.option2);
+      await this.setStateAsync("info.connection", { val: false, ack: true });
       return;
     }
     this.isFetching = true;
@@ -87,7 +100,6 @@ class LiquidCheck extends utils.Adapter {
       name: "liquid-check"
     });
     this.on("ready", this.onReady.bind(this));
-    this.on("stateChange", this.onStateChange.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
   /**
@@ -97,9 +109,13 @@ class LiquidCheck extends utils.Adapter {
     this.log.info("Poll Intervall: " + this.config.checkInterval);
     this.log.info("Poll Url option2: " + this.config.option2);
     await this.setStateAsync("info.connection", { val: false, ack: true });
-    await this.fetchData();
-    const intervalMs = (this.config.checkInterval || 15) * 60 * 1e3;
-    this.interval = this.setInterval(() => this.fetchData(), intervalMs);
+    this.subscribeStates("*");
+    this.startInterval();
+    try {
+      await this.fetchData();
+    } catch (e) {
+      this.log.error("Initial data fetch failed: " + e);
+    }
   }
   /**
    * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -110,33 +126,16 @@ class LiquidCheck extends utils.Adapter {
         clearInterval(this.interval);
       }
       callback();
-    } catch (e) {
+    } catch {
       callback();
     }
   }
-  // If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-  // You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-  // /**
-  //  * Is called if a subscribed object changes
-  //  */
-  // private onObjectChange(id: string, obj: ioBroker.Object | null | undefined): void {
-  // 	if (obj) {
-  // 		// The object was changed
-  // 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-  // 	} else {
-  // 		// The object was deleted
-  // 		this.log.info(`object ${id} deleted`);
-  // 	}
-  // }
-  /**
-   * Is called if a subscribed state changes
-   */
-  onStateChange(id, state) {
-    if (state) {
-      this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-    } else {
-      this.log.info(`state ${id} deleted`);
+  startInterval() {
+    if (this.interval) {
+      clearInterval(this.interval);
     }
+    const intervalMs = (this.config.checkInterval || 15) * 60 * 1e3;
+    this.interval = this.setInterval(() => this.fetchData(), intervalMs);
   }
   // If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
   // /**

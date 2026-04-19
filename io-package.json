@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "liquid-check",
-		"version": "0.1.0",
+		"version": "0.1.1",
 		"news": {
+			"0.1.1": {
+				"en": "Fix repochecker issues, resize logo, update dependencies",
+				"de": "Repochecker-Fehler behoben, Logo verkleinert, Abhängigkeiten aktualisiert",
+				"ru": "Исправления repochecker, изменение размера логотипа, обновление зависимостей",
+				"pt": "Correções do repochecker, redimensionamento do logótipo, atualização de dependências",
+				"nl": "Repochecker-fixes, logo verkleind, afhankelijkheden bijgewerkt",
+				"fr": "Corrections repochecker, redimensionnement du logo, mise à jour des dépendances",
+				"it": "Correzioni repochecker, ridimensionamento logo, aggiornamento dipendenze",
+				"es": "Correcciones de repochecker, cambio de tamaño del logo, actualización de dependencias",
+				"pl": "Poprawki repochecker, zmiana rozmiaru logo, aktualizacja zależności",
+				"uk": "Виправлення repochecker, зміна розміру логотипу, оновлення залежностей",
+				"zh-cn": "修复repochecker问题，调整logo大小，更新依赖项"
+			},
 			"0.1.0": {
 				"en": "ioBroker adapter guidelines compliance, URL validation, improved interval handling",
 				"de": "Einhaltung der ioBroker-Richtlinien, URL-Validierung, verbesserte Intervall-Verarbeitung",
