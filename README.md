@@ -54,6 +54,11 @@ All nested values in `payload` will be created as ioBroker states.
 
 ### **WORK IN PROGRESS**
 
+### 0.1.1 (2026-04-19)
+* (matz694) Fix repochecker issues for ioBroker repository submission
+* (matz694) Resize logo to 512x512, update keywords and dependencies
+* (matz694) Enable npm deploy workflow, ESLint 9 flat config
+
 ### 0.1.0 (2026-04-19)
 * (matz694) ioBroker adapter guidelines compliance
 * (matz694) URL validation for sensor endpoint
