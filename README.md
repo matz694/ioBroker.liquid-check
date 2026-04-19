@@ -52,6 +52,8 @@ All nested values in `payload` will be created as ioBroker states.
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+
 ### 0.1.0 (2026-04-19)
 * (matz694) ioBroker adapter guidelines compliance
 * (matz694) URL validation for sensor endpoint
