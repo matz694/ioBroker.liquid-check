@@ -52,8 +52,11 @@ All nested values in `payload` will be created as ioBroker states.
 
 ## Changelog
 
-### 0.0.3 **WORK IN PROGRESS**
-* (matz694) Bug fixes, best practices compliance, dependency updates
+### 0.1.0 (2026-04-19)
+* (matz694) ioBroker adapter guidelines compliance
+* (matz694) URL validation for sensor endpoint
+* (matz694) Improved interval handling (prevent overlapping fetches)
+* (matz694) Upgrade to ESLint 9 with flat config
 
 ### 0.0.2 (2025-12-26)
 * (matz694) Initial release
@@ -62,7 +65,7 @@ All nested values in `payload` will be created as ioBroker states.
 
 MIT License
 
-Copyright (c) 2025 matz694 <mstroske [at] gmail [dot] com>
+Copyright (c) 2025-2026 matz694 <mstroske [at] gmail [dot] com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
