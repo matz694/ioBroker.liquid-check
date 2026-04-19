@@ -5,24 +5,16 @@
 		"news": {
 			"0.1.0": {
 				"en": "ioBroker adapter guidelines compliance, URL validation, improved interval handling",
-				"de": "Einhaltung der ioBroker-Richtlinien, URL-Validierung, verbesserte Intervall-Verarbeitung"
-			},
-			"0.0.3": {
-				"en": "Bug fixes and best practices compliance",
-				"de": "Bugfixes und Einhaltung der Best Practices"
-			},
-			"0.0.2": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"uk": "Початкова версія",
-				"zh-cn": "首次出版"
+				"de": "Einhaltung der ioBroker-Richtlinien, URL-Validierung, verbesserte Intervall-Verarbeitung",
+				"ru": "Соответствие рекомендациям адаптера ioBroker, проверка URL, улучшенная обработка интервалов",
+				"pt": "Conformidade com as diretrizes do adaptador ioBroker, validação de URL, manuseio de intervalo aprimorado",
+				"nl": "Naleving van ioBroker-adapterrichtlijnen, URL-validatie, verbeterde intervalverwerking",
+				"fr": "Conformité aux directives de l'adaptateur ioBroker, validation d'URL, gestion améliorée des intervalles",
+				"it": "Conformità alle linee guida dell'adattatore ioBroker, convalida URL, gestione migliorata degli intervalli",
+				"es": "Cumplimiento de las directrices del adaptador ioBroker, validación de URL, manejo mejorado de intervalos",
+				"pl": "Zgodność z wytycznymi adaptera ioBroker, walidacja URL, ulepszona obsługa interwałów",
+				"uk": "Відповідність вимогам адаптера ioBroker, перевірка URL, покращена обробка інтервалів",
+				"zh-cn": "符合ioBroker适配器指南，URL验证，改进的间隔处理"
 			}
 		},
 		"titleLang": {
@@ -74,7 +66,7 @@
 		"loglevel": "info",
 		"tier": 3,
 		"mode": "daemon",
-		"type": "other",
+		"type": "metering",
 		"compact": true,
 		"connectionType": "local",
 		"dataSource": "poll",
@@ -88,7 +80,7 @@
 		],
 		"globalDependencies": [
 			{
-				"admin": ">=7.0.23"
+				"admin": ">=7.6.17"
 			}
 		]
 	},

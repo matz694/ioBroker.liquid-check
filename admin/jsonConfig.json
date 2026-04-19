@@ -10,7 +10,8 @@
 			"help": "in minutes",
 			"sm": 10,
 			"md": 4,
-			"lg": 2
+			"lg": 2,
+			"xl": 2
 		},
 		"option2": {
 			"type": "text",
@@ -19,7 +20,8 @@
 			"xs": 12,
 			"sm": 10,
 			"md": 6,
-			"lg": 4
+			"lg": 4,
+			"xl": 4
 		}
 	}
 }
