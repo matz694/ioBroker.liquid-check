@@ -56,6 +56,10 @@ All nested values in `payload` will be created as ioBroker states.
 
 ### **WORK IN PROGRESS**
 
+### 0.1.2 (2026-04-20)
+* (matz694) New logo design, resized to 256×256
+* (matz694) Add disclaimer clarifying private developer project, unaffiliated with SI Elektronik
+
 ### 0.1.1 (2026-04-19)
 * (matz694) Fix repochecker issues for ioBroker repository submission
 * (matz694) Resize logo to 512x512, update keywords and dependencies

@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "liquid-check",
-		"version": "0.1.1",
+		"version": "0.1.2",
 		"news": {
+			"0.1.2": {
+				"en": "New logo, add disclaimer about private developer project",
+				"de": "Neues Logo, Hinweis auf privates Entwicklerprojekt hinzugefügt",
+				"ru": "Новый логотип, добавлено заявление об отказе от ответственности",
+				"pt": "Novo logótipo, adicionado aviso de projeto de desenvolvedor privado",
+				"nl": "Nieuw logo, disclaimer voor privé-ontwikkelaarsproject toegevoegd",
+				"fr": "Nouveau logo, ajout d'une clause de non-responsabilité pour projet privé",
+				"it": "Nuovo logo, aggiunta dichiarazione di non responsabilità per progetto privato",
+				"es": "Nuevo logo, añadido aviso de proyecto de desarrollador privado",
+				"pl": "Nowe logo, dodano zastrzeżenie dotyczące prywatnego projektu dewelopera",
+				"uk": "Новий логотип, додано відмову від відповідальності щодо приватного проекту",
+				"zh-cn": "新Logo，添加私人开发者项目免责声明"
+			},
 			"0.1.1": {
 				"en": "Fix repochecker issues, resize logo, update dependencies",
 				"de": "Repochecker-Fehler behoben, Logo verkleinert, Abhängigkeiten aktualisiert",
