@@ -14,6 +14,8 @@
 
 This adapter reads data from a Liquid-Check sensor device and makes it available as states in ioBroker. The sensor measures liquid levels and provides various measurement data via a JSON API.
 
+> **Disclaimer:** This adapter is a private open-source project developed independently by matz694. It is **not** an official product of SI Elektronik GmbH. SI Elektronik GmbH is not affiliated with this project, does not endorse it, and provides no support for it. For issues or questions regarding this adapter, please use the [GitHub issue tracker](https://github.com/matz694/ioBroker.liquid-check/issues).
+
 ### Features
 
 - Automatic polling of sensor data at configurable intervals
