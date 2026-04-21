@@ -53,8 +53,7 @@ All nested values in `payload` will be created as ioBroker states.
 - `<key>` - Dynamic states based on sensor data
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 0.1.3 (2026-04-21)
 * (matz694) Fix autocheck E9006: exclude .commitinfo via .gitignore
 
 ### 0.1.2 (2026-04-20)
