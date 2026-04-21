@@ -1,132 +1,145 @@
 {
-	"common": {
-		"name": "liquid-check",
-		"version": "0.1.2",
-		"news": {
-			"0.1.2": {
-				"en": "New logo, add disclaimer about private developer project",
-				"de": "Neues Logo, Hinweis auf privates Entwicklerprojekt hinzugefügt",
-				"ru": "Новый логотип, добавлено заявление об отказе от ответственности",
-				"pt": "Novo logótipo, adicionado aviso de projeto de desenvolvedor privado",
-				"nl": "Nieuw logo, disclaimer voor privé-ontwikkelaarsproject toegevoegd",
-				"fr": "Nouveau logo, ajout d'une clause de non-responsabilité pour projet privé",
-				"it": "Nuovo logo, aggiunta dichiarazione di non responsabilità per progetto privato",
-				"es": "Nuevo logo, añadido aviso de proyecto de desarrollador privado",
-				"pl": "Nowe logo, dodano zastrzeżenie dotyczące prywatnego projektu dewelopera",
-				"uk": "Новий логотип, додано відмову від відповідальності щодо приватного проекту",
-				"zh-cn": "新Logo，添加私人开发者项目免责声明"
-			},
-			"0.1.1": {
-				"en": "Fix repochecker issues, resize logo, update dependencies",
-				"de": "Repochecker-Fehler behoben, Logo verkleinert, Abhängigkeiten aktualisiert",
-				"ru": "Исправления repochecker, изменение размера логотипа, обновление зависимостей",
-				"pt": "Correções do repochecker, redimensionamento do logótipo, atualização de dependências",
-				"nl": "Repochecker-fixes, logo verkleind, afhankelijkheden bijgewerkt",
-				"fr": "Corrections repochecker, redimensionnement du logo, mise à jour des dépendances",
-				"it": "Correzioni repochecker, ridimensionamento logo, aggiornamento dipendenze",
-				"es": "Correcciones de repochecker, cambio de tamaño del logo, actualización de dependencias",
-				"pl": "Poprawki repochecker, zmiana rozmiaru logo, aktualizacja zależności",
-				"uk": "Виправлення repochecker, зміна розміру логотипу, оновлення залежностей",
-				"zh-cn": "修复repochecker问题，调整logo大小，更新依赖项"
-			},
-			"0.1.0": {
-				"en": "ioBroker adapter guidelines compliance, URL validation, improved interval handling",
-				"de": "Einhaltung der ioBroker-Richtlinien, URL-Validierung, verbesserte Intervall-Verarbeitung",
-				"ru": "Соответствие рекомендациям адаптера ioBroker, проверка URL, улучшенная обработка интервалов",
-				"pt": "Conformidade com as diretrizes do adaptador ioBroker, validação de URL, manuseio de intervalo aprimorado",
-				"nl": "Naleving van ioBroker-adapterrichtlijnen, URL-validatie, verbeterde intervalverwerking",
-				"fr": "Conformité aux directives de l'adaptateur ioBroker, validation d'URL, gestion améliorée des intervalles",
-				"it": "Conformità alle linee guida dell'adattatore ioBroker, convalida URL, gestione migliorata degli intervalli",
-				"es": "Cumplimiento de las directrices del adaptador ioBroker, validación de URL, manejo mejorado de intervalos",
-				"pl": "Zgodność z wytycznymi adaptera ioBroker, walidacja URL, ulepszona obsługa interwałów",
-				"uk": "Відповідність вимогам адаптера ioBroker, перевірка URL, покращена обробка інтервалів",
-				"zh-cn": "符合ioBroker适配器指南，URL验证，改进的间隔处理"
-			}
-		},
-		"titleLang": {
-			"en": "Liquid-Check",
-			"de": "Flüssigkeitskontrolle",
-			"ru": "Перепроверка жидкости",
-			"pt": "Verifique líquido",
-			"nl": "Vloeistofcontrole",
-			"fr": "Vérifier le liquide",
-			"it": "Controllo liquido",
-			"es": "Verificar con líquido",
-			"pl": "Sprawdzenie cieczy",
-			"uk": "Рідина",
-			"zh-cn": "液体检查"
-		},
-		"desc": {
-			"en": "liquid-check",
-			"de": "Flüssigkeitskontrolle",
-			"ru": "перепроверка жидкости",
-			"pt": "Verifique líquido",
-			"nl": "vloeistofcontrole",
-			"fr": "vérifier le liquide",
-			"it": "controllo liquido",
-			"es": "verificar con líquido",
-			"pl": "sprawdzenie cieczy",
-			"uk": "рідина",
-			"zh-cn": "液体检查"
-		},
-		"authors": [
-			"matz694 <matthias@stroske.de>"
-		],
-		"keywords": [
-			"liquid",
-			"level",
-			"sensor",
-			"water",
-			"tank",
-			"metering"
-		],
-		"licenseInformation": {
-			"type": "free",
-			"license": "MIT"
-		},
-		"platform": "Javascript/Node.js",
-		"icon": "liquid-check.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/matz694/ioBroker.liquid-check/main/admin/liquid-check.png",
-		"readme": "https://github.com/matz694/ioBroker.liquid-check/blob/main/README.md",
-		"loglevel": "info",
-		"tier": 3,
-		"mode": "daemon",
-		"type": "metering",
-		"compact": true,
-		"connectionType": "local",
-		"dataSource": "poll",
-		"adminUI": {
-			"config": "json"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=6.0.11"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=7.6.20"
-			}
-		]
-	},
-	"native": {
-		"checkInterval": 15,
-		"option2": "http://liquid-check/infos.json"
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"name": "Connection status",
-				"type": "boolean",
-				"role": "indicator.connected",
-				"read": true,
-				"write": false
-			},
-			"native": {}
-		}
-	]
+  "common": {
+    "name": "liquid-check",
+    "version": "0.1.3",
+    "news": {
+      "0.1.3": {
+        "en": "Fix autocheck E9006: exclude .commitinfo via .gitignore",
+        "de": "Autocheck E9006: Ausschließen .commitinfo über .gitignore",
+        "ru": "Исправить автопроверку E9006: исключить .commitinfo через .gitignore",
+        "pt": "Corrigir autocheck E9006: exclua .commitinfo via .gitignore",
+        "nl": "Repareren autocheck E906: .commitinfo uitsluiten via .gitignore",
+        "fr": "Correction automatique E9006: exclure .commitinfo via .gitignore",
+        "it": "Fissare autocheck E9006: escludere .commitinfo via .gitignore",
+        "es": "Fijar el autocheck E9006: excluir .commitinfo via .gitignore",
+        "pl": "Fix autocheck E9006: exclude .commitinfo via .gitignore",
+        "uk": "Виправлення autocheck E9006: виключення .commitinfo через .gitignore",
+        "zh-cn": "修复自动检查 E9006 : 通过. gitignore 排除.commitinfo"
+      },
+      "0.1.2": {
+        "en": "New logo, add disclaimer about private developer project",
+        "de": "Neues Logo, Hinweis auf privates Entwicklerprojekt hinzugefügt",
+        "ru": "Новый логотип, добавлено заявление об отказе от ответственности",
+        "pt": "Novo logótipo, adicionado aviso de projeto de desenvolvedor privado",
+        "nl": "Nieuw logo, disclaimer voor privé-ontwikkelaarsproject toegevoegd",
+        "fr": "Nouveau logo, ajout d'une clause de non-responsabilité pour projet privé",
+        "it": "Nuovo logo, aggiunta dichiarazione di non responsabilità per progetto privato",
+        "es": "Nuevo logo, añadido aviso de proyecto de desarrollador privado",
+        "pl": "Nowe logo, dodano zastrzeżenie dotyczące prywatnego projektu dewelopera",
+        "uk": "Новий логотип, додано відмову від відповідальності щодо приватного проекту",
+        "zh-cn": "新Logo，添加私人开发者项目免责声明"
+      },
+      "0.1.1": {
+        "en": "Fix repochecker issues, resize logo, update dependencies",
+        "de": "Repochecker-Fehler behoben, Logo verkleinert, Abhängigkeiten aktualisiert",
+        "ru": "Исправления repochecker, изменение размера логотипа, обновление зависимостей",
+        "pt": "Correções do repochecker, redimensionamento do logótipo, atualização de dependências",
+        "nl": "Repochecker-fixes, logo verkleind, afhankelijkheden bijgewerkt",
+        "fr": "Corrections repochecker, redimensionnement du logo, mise à jour des dépendances",
+        "it": "Correzioni repochecker, ridimensionamento logo, aggiornamento dipendenze",
+        "es": "Correcciones de repochecker, cambio de tamaño del logo, actualización de dependencias",
+        "pl": "Poprawki repochecker, zmiana rozmiaru logo, aktualizacja zależności",
+        "uk": "Виправлення repochecker, зміна розміру логотипу, оновлення залежностей",
+        "zh-cn": "修复repochecker问题，调整logo大小，更新依赖项"
+      },
+      "0.1.0": {
+        "en": "ioBroker adapter guidelines compliance, URL validation, improved interval handling",
+        "de": "Einhaltung der ioBroker-Richtlinien, URL-Validierung, verbesserte Intervall-Verarbeitung",
+        "ru": "Соответствие рекомендациям адаптера ioBroker, проверка URL, улучшенная обработка интервалов",
+        "pt": "Conformidade com as diretrizes do adaptador ioBroker, validação de URL, manuseio de intervalo aprimorado",
+        "nl": "Naleving van ioBroker-adapterrichtlijnen, URL-validatie, verbeterde intervalverwerking",
+        "fr": "Conformité aux directives de l'adaptateur ioBroker, validation d'URL, gestion améliorée des intervalles",
+        "it": "Conformità alle linee guida dell'adattatore ioBroker, convalida URL, gestione migliorata degli intervalli",
+        "es": "Cumplimiento de las directrices del adaptador ioBroker, validación de URL, manejo mejorado de intervalos",
+        "pl": "Zgodność z wytycznymi adaptera ioBroker, walidacja URL, ulepszona obsługa interwałów",
+        "uk": "Відповідність вимогам адаптера ioBroker, перевірка URL, покращена обробка інтервалів",
+        "zh-cn": "符合ioBroker适配器指南，URL验证，改进的间隔处理"
+      }
+    },
+    "titleLang": {
+      "en": "Liquid-Check",
+      "de": "Flüssigkeitskontrolle",
+      "ru": "Перепроверка жидкости",
+      "pt": "Verifique líquido",
+      "nl": "Vloeistofcontrole",
+      "fr": "Vérifier le liquide",
+      "it": "Controllo liquido",
+      "es": "Verificar con líquido",
+      "pl": "Sprawdzenie cieczy",
+      "uk": "Рідина",
+      "zh-cn": "液体检查"
+    },
+    "desc": {
+      "en": "liquid-check",
+      "de": "Flüssigkeitskontrolle",
+      "ru": "перепроверка жидкости",
+      "pt": "Verifique líquido",
+      "nl": "vloeistofcontrole",
+      "fr": "vérifier le liquide",
+      "it": "controllo liquido",
+      "es": "verificar con líquido",
+      "pl": "sprawdzenie cieczy",
+      "uk": "рідина",
+      "zh-cn": "液体检查"
+    },
+    "authors": [
+      "matz694 <matthias@stroske.de>"
+    ],
+    "keywords": [
+      "liquid",
+      "level",
+      "sensor",
+      "water",
+      "tank",
+      "metering"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "liquid-check.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/matz694/ioBroker.liquid-check/main/admin/liquid-check.png",
+    "readme": "https://github.com/matz694/ioBroker.liquid-check/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "daemon",
+    "type": "metering",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.20"
+      }
+    ]
+  },
+  "native": {
+    "checkInterval": 15,
+    "option2": "http://liquid-check/infos.json"
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "name": "Connection status",
+        "type": "boolean",
+        "role": "indicator.connected",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    }
+  ]
 }
