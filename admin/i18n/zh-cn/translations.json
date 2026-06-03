@@ -1,5 +1,6 @@
 {
 	"liquid-check adapter settings": "liquid-check的适配器设置",
-	"checkInterval": "选项1",
-	"option2": "选项2"
+	"Poll interval": "轮询间隔",
+	"in minutes": "以分钟为单位",
+	"Liquid-Check URL": "Liquid-Check URL"
 }

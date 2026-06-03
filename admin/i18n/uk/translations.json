@@ -1,5 +1,6 @@
 {
 	"liquid-check adapter settings": "Налаштування адаптера для liquid-check",
-	"checkInterval": "Варіант1",
-	"option2": "Варіант2"
+	"Poll interval": "Інтервал опитування",
+	"in minutes": "у хвилинах",
+	"Liquid-Check URL": "Liquid-Check URL"
 }

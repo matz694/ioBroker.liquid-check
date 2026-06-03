@@ -1,5 +1,6 @@
 {
 	"liquid-check adapter settings": "Adaptereinstellungen für liquid-check",
-	"checkInterval": "checkInterval",
-	"option2": "Option2"
+	"Poll interval": "Abfrageintervall",
+	"in minutes": "in Minuten",
+	"Liquid-Check URL": "Liquid-Check URL"
 }
