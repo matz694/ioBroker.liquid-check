@@ -1,5 +1,6 @@
 {
 	"liquid-check adapter settings": "Adapter settings for liquid-check",
-	"checkInterval": "checkInterval",
-	"option2": "option2"
+	"Poll interval": "Poll interval",
+	"in minutes": "in minutes",
+	"Liquid-Check URL": "Liquid-Check URL"
 }
