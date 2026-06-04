@@ -76,7 +76,7 @@ class LiquidCheck extends utils.Adapter {
       return;
     }
     if (!this.isValidUrl(this.config.option2)) {
-      this.log.error("Invalid URL: " + this.config.option2);
+      this.log.error(`Invalid URL: ${this.config.option2}`);
       await this.setStateAsync("info.connection", { val: false, ack: true });
       return;
     }
@@ -84,11 +84,11 @@ class LiquidCheck extends utils.Adapter {
     try {
       const response = await import_axios.default.get(this.config.option2, { timeout: 1e4 });
       const data = response.data;
-      this.log.debug("Daten empfangen: " + JSON.stringify(data));
+      this.log.debug(`Daten empfangen: ${JSON.stringify(data)}`);
       await this.processData(data.payload);
       await this.setStateAsync("info.connection", { val: true, ack: true });
     } catch (err) {
-      this.log.error("Fehler beim Laden der Daten: " + err.message);
+      this.log.error(`Fehler beim Laden der Daten: ${err.message}`);
       await this.setStateAsync("info.connection", { val: false, ack: true });
     } finally {
       this.isFetching = false;
@@ -106,15 +106,15 @@ class LiquidCheck extends utils.Adapter {
    * Is called when databases are connected and adapter received configuration.
    */
   async onReady() {
-    this.log.info("Poll Intervall: " + this.config.checkInterval);
-    this.log.info("Poll Url option2: " + this.config.option2);
+    this.log.info(`Poll Intervall: ${this.config.checkInterval}`);
+    this.log.info(`Poll Url option2: ${this.config.option2}`);
     await this.setStateAsync("info.connection", { val: false, ack: true });
     this.subscribeStates("*");
     this.startInterval();
     try {
       await this.fetchData();
     } catch (e) {
-      this.log.error("Initial data fetch failed: " + e);
+      this.log.error(`Initial data fetch failed: ${e instanceof Error ? e.message : String(e)}`);
     }
   }
   /**
