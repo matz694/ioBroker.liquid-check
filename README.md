@@ -53,7 +53,7 @@ All nested values in `payload` will be created as ioBroker states.
 - `<key>` - Dynamic states based on sensor data
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 0.1.4 (2026-07-20)
 - (copilot) Adapter requires node.js >= 22 now
 
 ### 0.1.3 (2026-04-21)
