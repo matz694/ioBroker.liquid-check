@@ -12,7 +12,7 @@
         "fr": "Correction automatique E9006: exclure .commitinfo via .gitignore",
         "it": "Fissare autocheck E9006: escludere .commitinfo via .gitignore",
         "es": "Fijar el autocheck E9006: excluir .commitinfo via .gitignore",
-        "pl": "Fix autocheck E9006: exclude .commitinfo via .gitignore",
+        "pl": "Napraw autocheck E9006: wykluczenie .commitinfo przez .gitignore",
         "uk": "Виправлення autocheck E9006: виключення .commitinfo через .gitignore",
         "zh-cn": "修复自动检查 E9006 : 通过. gitignore 排除.commitinfo"
       },

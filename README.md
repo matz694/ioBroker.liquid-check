@@ -74,6 +74,8 @@ All nested values in `payload` will be created as ioBroker states.
 * (matz694) Improved interval handling (prevent overlapping fetches)
 * (matz694) Upgrade to ESLint 9 with flat config
 
+Older changes can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
+
 ## License
 
 MIT License
